@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FramePixel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+
+    <header class="top-nav">
+      <div class="brand">
+        <span class="logo-box">■</span>
+        <span class="logo-text">FramePixel</span>
+      </div>
+
+      <div class="quick-actions">
+        <div class="control-group">
+          <label for="grid-size">Canvas</label>
+          <select id="grid-size">
+            <option value="16" selected>16 x 16</option>
+            <option value="32">32 x 32</option>
+          </select>
+        </div>
+
+        <button id="btn-export-sheet" class="btn btn-primary">Export Spritesheet</button>
+        <button id="btn-export-json" class="btn">Export JSON</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar-left">
+        <div class="panel-section">
+          <h3>Tools</h3>
+          <div class="tools-grid">
+            <button class="tool-btn active" data-tool="pencil" title="Pencil (P)">✏️</button>
+            <button class="tool-btn" data-tool="eraser" title="Eraser (E)">🧹</button>
+            <button class="tool-btn" data-tool="bucket" title="Bucket Fill (B)">🪣</button>
+            <button class="tool-btn" data-tool="picker" title="Eyedropper (I)">💉</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Palette</h3>
+          <input type="color" id="primary-color" value="#000000" />
+          <div class="palette-swatches" id="swatches-container"></div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Display</h3>
+          <label class="checkbox-label">
+            <input type="checkbox" id="toggle-grid" checked /> Show Grid
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="toggle-onion" /> Onion Skin
+          </label>
+        </div>
+      </aside>
+
+      <section class="canvas-viewport">
+        <div class="canvas-wrapper" id="canvas-container">
+          <canvas id="onion-canvas"></canvas>
+          <canvas id="art-canvas"></canvas>
+          <canvas id="grid-canvas"></canvas>
+        </div>
+      </section>
+
+      <aside class="sidebar-right">
+        <div class="panel-section">
+          <h3>Playback</h3>
+          <div class="preview-box">
+            <canvas id="preview-canvas" width="64" height="64"></canvas>
+          </div>
+          <div class="playback-controls">
+            <button id="btn-play" class="btn">Pause</button>
+            <div class="fps-slider">
+              <label for="fps-input">Speed: <span id="fps-label">8</span> FPS</label>
+              <input type="range" id="fps-input" min="1" max="24" value="8" />
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="timeline-bar">
+      <div class="timeline-header">
+        <span>Timeline Frames</span>
+        <button id="btn-add-frame" class="btn btn-sm">+ New Frame</button>
+      </div>
+      <div class="frames-track" id="frames-track"></div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
